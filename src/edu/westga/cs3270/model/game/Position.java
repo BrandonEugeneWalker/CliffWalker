@@ -11,6 +11,7 @@ public class Position {
 
 	private int xPos;
 	private int yPos;
+	private int positionReward;
 
 	/**
 	 * Creates a new instance of a Position object.
@@ -18,9 +19,10 @@ public class Position {
 	 * @param x the x coordinate
 	 * @param y the y coordinate.
 	 */
-	public Position(int x, int y) {
+	public Position(int x, int y, int reward) {
 		this.xPos = x;
 		this.yPos = y;
+		this.positionReward = reward;
 	}
 
 	/**
@@ -100,7 +102,7 @@ public class Position {
 	 */
 	@Override
 	public Position clone() {
-		return new Position(this.xPos, this.yPos);
+		return new Position(this.xPos, this.yPos, this.positionReward);
 	}
 
 	/**

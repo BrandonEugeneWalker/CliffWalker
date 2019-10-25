@@ -4,20 +4,21 @@ import edu.westga.cs3270.model.game.Position;
 
 public interface GameBoard {
 	
+	
 	int getLength();
 	
 	int getWidth();
 	
-	Position getUp(Position strtingPosition);
+	Position getUpPosition(Position strtingPosition);
 	
-	Position getDown(Position startingPosition);
+	Position getDownPosition(Position startingPosition);
 	
-	Position getLeft(Position startingPositon);
+	Position getLeftPosition(Position startingPositon);
 	
-	Position getRight(Position startingPosition);
+	Position getRightPosition(Position startingPosition);
 	
+	Position getCurrentPosition();
 	
+	String convertBoardBaluesToString();
 	
-	
-
 }

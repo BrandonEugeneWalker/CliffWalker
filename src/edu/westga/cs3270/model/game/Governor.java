@@ -30,8 +30,8 @@ public class Governor {
 		}
 		this.gameHeight = height;
 		this.gameWidth = width;
-		this.startState = new Position(0, 0);
-		this.endState = new Position(width - 1, 0);
+		this.startState = new Position(0, 0, -1); //TODO
+		this.endState = new Position(width - 1, 0, 100); //TODO
 		this.startEpisode();
 	}
 
