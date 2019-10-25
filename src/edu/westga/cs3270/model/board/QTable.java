@@ -1,6 +1,6 @@
 package edu.westga.cs3270.model.board;
 
-import edu.westga.cs3270.model.game.QState;
+import edu.westga.cs3270.model.QState;
 
 public interface QTable {
 	

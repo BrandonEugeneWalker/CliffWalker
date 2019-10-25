@@ -1,4 +1,4 @@
-package edu.westga.cs3270.model.game;
+package edu.westga.cs3270.model;
 
 public class QPoint {
 

@@ -1,4 +1,4 @@
-package edu.westga.cs3270.model.game;
+package edu.westga.cs3270.model;
 
 /**
  * A implementation of Action enum written by Mengxiao Lin aka linmx0130 on

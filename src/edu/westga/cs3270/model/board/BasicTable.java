@@ -2,8 +2,8 @@ package edu.westga.cs3270.model.board;
 
 import java.util.HashMap;
 
-import edu.westga.cs3270.model.game.QPoint;
-import edu.westga.cs3270.model.game.QState;
+import edu.westga.cs3270.model.QPoint;
+import edu.westga.cs3270.model.QState;
 
 public class BasicTable implements QTable {
 

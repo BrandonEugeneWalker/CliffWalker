@@ -1,4 +1,4 @@
-package edu.westga.cs3270.model.game;
+package edu.westga.cs3270.model;
 
 /**
  * This class represents a state in the QTable.
