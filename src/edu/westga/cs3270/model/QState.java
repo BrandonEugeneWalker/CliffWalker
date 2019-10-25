@@ -83,7 +83,7 @@ public class QState {
 	}
 
 	/**
-	 * @return the positionReward
+	 * @return the state reward
 	 */
 	public int getStateReward() {
 		return stateReward;

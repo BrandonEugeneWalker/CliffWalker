@@ -162,4 +162,18 @@ public class BasicTable implements QTable {
 		return new QState(rewardValue);
 	}
 
+	public void resetBackToStart() {
+		QPoint startPoint = new QPoint(0, 0);
+		this.currentPoint = startPoint;
+		this.currentPosition = this.gameTiles.get(this.currentPoint);
+	}
+
+	public boolean isOffCliff() {
+		return this.currentPosition.getStateReward() <= -100;
+	}
+
+	public boolean isAtGoalState() {
+		return this.currentPosition.getStateReward() == 0;
+	}
+
 }
