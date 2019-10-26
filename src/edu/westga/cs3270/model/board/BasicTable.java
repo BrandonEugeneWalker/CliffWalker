@@ -1,7 +1,9 @@
 package edu.westga.cs3270.model.board;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
+import edu.westga.cs3270.model.Action;
 import edu.westga.cs3270.model.QPoint;
 import edu.westga.cs3270.model.QState;
 
@@ -102,8 +104,44 @@ public class BasicTable implements QTable {
 
 	@Override
 	public String convertBoardBaluesToString() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder outputStringBuilder = new StringBuilder();
+		DecimalFormat decimalFormat = new DecimalFormat("###.##");
+		String tableSeperator = "----------------------------------------";
+		for(int y = this.ySize - 1; y > 0; y--) {
+			for (int x = 0; x < this.xSize; x++) {
+				QPoint currentPoint = new QPoint(x, y);
+				QState currentState = this.gameTiles.get(currentPoint);
+				String qValueString = decimalFormat.format(currentState.getUp());
+				String printString = "| U: " + qValueString + " ";
+				outputStringBuilder.append(printString);
+			}
+			outputStringBuilder.append(System.lineSeparator() + tableSeperator + System.lineSeparator());
+			for (int x = 0; x < this.xSize; x++) {
+				QPoint currentPoint = new QPoint(x, y);
+				QState currentState = this.gameTiles.get(currentPoint);
+				String qValueString = decimalFormat.format(currentState.getDown());
+				String printString = "| D: " + qValueString + " ";
+				outputStringBuilder.append(printString);
+			}
+			outputStringBuilder.append(System.lineSeparator() + tableSeperator + System.lineSeparator());
+			for (int x = 0; x < this.xSize; x++) {
+				QPoint currentPoint = new QPoint(x, y);
+				QState currentState = this.gameTiles.get(currentPoint);
+				String qValueString = decimalFormat.format(currentState.getLeft());
+				String printString = "| L: " + qValueString + " ";
+				outputStringBuilder.append(printString);
+			}
+			outputStringBuilder.append(System.lineSeparator() + tableSeperator + System.lineSeparator());
+			for (int x = 0; x < this.xSize; x++) {
+				QPoint currentPoint = new QPoint(x, y);
+				QState currentState = this.gameTiles.get(currentPoint);
+				String qValueString = decimalFormat.format(currentState.getRight());
+				String printString = "| R: " + qValueString + " ";
+				outputStringBuilder.append(printString);
+			}
+			outputStringBuilder.append(System.lineSeparator() + tableSeperator + System.lineSeparator());
+		}
+		return outputStringBuilder.toString();
 	}
 
 	@Override
@@ -144,7 +182,7 @@ public class BasicTable implements QTable {
 
 	private void initializeBoard() {
 		for (int x = 0; x <= this.xSize; x++) {
-			for (int y = 0; x <= this.ySize; y++) {
+			for (int y = 0; y <= this.ySize; y++) {
 				QState boardPosition = this.initializePosition(x, y);
 				QPoint boardPoint = new QPoint(x, y);
 				this.gameTiles.put(boardPoint, boardPosition);
@@ -174,6 +212,23 @@ public class BasicTable implements QTable {
 
 	public boolean isAtGoalState() {
 		return this.currentPosition.getStateReward() == 0;
+	}
+	
+	public int getActionRewardValue(Action action) {
+		QState futureState = null;
+		switch (action) {
+			case UP:
+				futureState = this.getUpPosition();
+			case DOWN:
+				futureState = this.getDownPosition();
+			case LEFT:
+				futureState = this.getLeftPosition();
+			case RIGHT:
+				futureState = this.getRightPosition();
+			default:
+				break;
+		}
+		return futureState.getStateReward();
 	}
 
 }

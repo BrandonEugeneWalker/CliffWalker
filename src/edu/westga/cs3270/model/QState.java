@@ -88,4 +88,36 @@ public class QState {
 	public int getStateReward() {
 		return stateReward;
 	}
+	
+	public Action getBestAction() {
+		double actionValue = Double.MIN_VALUE;
+		Action returnAction = null;
+		if (this.up > actionValue) {
+			returnAction = Action.UP;
+		}
+		if (this.down > actionValue) {
+			returnAction = Action.DOWN;
+		}
+		if (this.left > actionValue) {
+			returnAction = Action.LEFT;
+		}
+		if (this.right > actionValue) {
+			returnAction = Action.RIGHT;
+		}
+		return returnAction;
+	}
+	
+	public double getBestActionValue() {
+		double actionValue = this.up;
+		if (actionValue < this.down) {
+			actionValue = this.down;
+		}
+		if (actionValue < this.left) {
+			actionValue = this.left;
+		}
+		if (actionValue < this.right) {
+			actionValue = this.right;
+		}
+		return actionValue;
+	}
 }

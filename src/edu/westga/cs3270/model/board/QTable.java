@@ -1,5 +1,6 @@
 package edu.westga.cs3270.model.board;
 
+import edu.westga.cs3270.model.Action;
 import edu.westga.cs3270.model.QState;
 
 public interface QTable {
@@ -28,5 +29,11 @@ public interface QTable {
 	void moveLeft();
 	
 	void moveRight();
+	
+	boolean isOffCliff();
+	
+	boolean isAtGoalState();
+	
+	int getActionRewardValue(Action action);
 	
 }
